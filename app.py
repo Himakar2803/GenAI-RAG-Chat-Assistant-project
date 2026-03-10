@@ -3,10 +3,11 @@ import json
 import numpy as np
 import google.generativeai as genai
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 app = Flask(__name__)
 
-# Gemini API key (replace with your key)
+# Gemini API key
 genai.configure(api_key="AIzaSyBhqsqB8XZZHhKb6CzVE1RtzWlpt9dIyJw")
 
 # Load documents
@@ -26,7 +27,7 @@ for doc in documents:
     embeddings.append(emb)
     texts.append(doc["content"])
 
-# Search similar docs
+# Search similar documents
 def search(query):
 
     query_emb = generate_embedding(query)
@@ -35,6 +36,7 @@ def search(query):
 
     for emb in embeddings:
         min_len = min(len(query_emb), len(emb))
+
         sims.append(
             cosine_similarity(
                 [query_emb[:min_len]],
@@ -99,5 +101,7 @@ def chat():
         return jsonify({"reply": "Server error occurred."})
 
 
+# IMPORTANT FOR RENDER DEPLOYMENT
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
