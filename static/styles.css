@@ -1,0 +1,65 @@
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#667eea,#764ba2);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
+
+.container{
+width:420px;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+h1{
+margin:0;
+font-size:24px;
+}
+
+.subtitle{
+color:gray;
+font-size:14px;
+margin-bottom:15px;
+}
+
+#chatbox{
+height:300px;
+border:1px solid #ddd;
+border-radius:10px;
+padding:10px;
+overflow-y:auto;
+background:#f9f9f9;
+text-align:left;
+margin-bottom:10px;
+}
+
+.input-area{
+display:flex;
+gap:8px;
+}
+
+input{
+flex:1;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 15px;
+background:#667eea;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#5563d1;
+}
